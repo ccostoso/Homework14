@@ -1,0 +1,30 @@
+<div class="container d-flex flex-column justify-content-center">
+    <img src="/assets/img/burger.png" alt="Burger image" class="my-4 mx-auto burger-img">
+
+    <div class="row">
+        <ul class="list-group col-md-6 mx-auto px-4">
+            {{#each burger}}
+                {{#unless devoured}}
+                    {{> burgers/burgers-block devoured=false}}
+                {{/unless}}
+            {{/each}}
+        </ul>
+
+        <ul class="list-group col-md-6 mx-auto px-4">
+            {{#each burger}}
+                {{#if devoured}}
+                    {{> burgers/devoured-block devoured=true}}
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <form action="/api/burger" method="post" class="input-group my-4 mx-auto col-md-8 p-0">
+        <input class="form-control" id="new-burger-input" type="text" placeholder="Add a New Burger!"
+            aria-placeholder="Add a New Burger!">
+        </input>
+        <div class="input-group-append">
+            <button id="new-burger-submit" type="submit" class="btn btn-outline-primary">Submit</button>
+        </div>
+    </form>
+</div>
